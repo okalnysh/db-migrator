@@ -1,3 +1,6 @@
+    use Pipedrive;
+    go
+
     declare @ScriptName varchar(256) = 'test3';
     set nocount on;
     set xact_abort on;

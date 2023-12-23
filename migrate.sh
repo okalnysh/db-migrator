@@ -33,12 +33,9 @@ EOF
     echo "$sql" >> temp.sql;
 }
 
-apply_temp_file(){
 
-}
-
-for file_path in ./sql-scripts/*.sql; do
+for file_path in ./migration-scripts/*.sql; do
     [ -e "$file_path" ] || continue;
     form_temp_file
-    apply_temp_file
+    sqlcmd -i temp.sql
 done
