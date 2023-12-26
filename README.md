@@ -17,8 +17,8 @@ docker build -t db-migrator:1.0 -t db-migrator:latest .
 ```shell
 export SQLCMDSERVER_QA=_qa_sqlserver_address_or_hostname
 export SQLCMDSERVER_PROD=_prod_sqlserver_address_or_hostname
-export SQLCMDUSER=_sqlserver_username
-export SQLCMDPASSWORD=_sqlserver_username_password
+export SQLCMDUSER=_sqlserver_user_name
+export SQLCMDPASSWORD=_sqlserver_user_password
 ```
 
 ## Initializing the Database
