@@ -21,6 +21,14 @@ export SQLCMDUSER=_sqlserver_user_name
 export SQLCMDPASSWORD=_sqlserver_user_password
 ```
 
+## Migration-script Directory
+The actual `migration-scripts` directory can be specified by editing the appropriate `docker-compose` file.
+By default it points to the directory with test scripts.
+```yaml
+    volumes:
+      - ./migration-scripts:/migration-scripts
+```
+
 ## Initializing the Database
 The initialization process sets up essential database objects (like schema, table, and stored procedures) necessary for the db-migrator to function correctly. <br>
 This process is idempotent, meaning it can be executed multiple times without affecting existing objects. <br>
