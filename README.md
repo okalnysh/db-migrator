@@ -21,7 +21,7 @@ export SQLCMDUSER=_sqlserver_user_name
 export SQLCMDPASSWORD=_sqlserver_user_password
 ```
 
-## Migration-script Directory
+## Migration-scripts Directory
 The actual `migration-scripts` directory can be specified by editing the appropriate `docker-compose` file.
 By default it points to the directory with test scripts.
 ```yaml
