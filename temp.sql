@@ -1,17 +1,14 @@
-    use Pipedrive;
-    go
-
     declare @ScriptName varchar(256) = 'test3';
     set nocount on;
     set xact_abort on;
 
-    if not exists(select 1 from utils.UpdateScriptsLog ul where ul.ScriptName = @ScriptName)
+    if not exists(select 1 from okay.MigrationsLog ul where ul.ScriptName = @ScriptName)
     begin
-        exec utils.UpdateScriptStarted @ScriptName;
+        exec okay.SetScriptStarted @ScriptName;
         begin transaction;
         begin try
 
-            select 3;
+            waitfor delay '00:00:12';
 
             commit;
         end try
@@ -19,6 +16,6 @@
             if @@trancount > 0 rollback;
             throw;
         end catch;
-        exec utils.UpdateScriptEnded @ScriptName;
+        exec okay.SetScriptEnded @ScriptName;
     end
     go

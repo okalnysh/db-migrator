@@ -6,5 +6,5 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install sqlcmd -y && \
     apt-get clean
-WORKDIR /db-migrator
-COPY migrate.sh migrate.sh
+RUN mkdir /migration-scripts
+COPY ./*.sh /

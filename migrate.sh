@@ -10,9 +10,9 @@ form_temp_file(){
     set nocount on;
     set xact_abort on;
 
-    if not exists(select 1 from utils.UpdateScriptsLog ul where ul.ScriptName = @ScriptName)
+    if not exists(select 1 from okay.MigrationsLog ul where ul.ScriptName = @ScriptName)
     begin
-        exec utils.UpdateScriptStarted @ScriptName;
+        exec okay.SetScriptStarted @ScriptName;
         begin transaction;
         begin try
 
@@ -24,7 +24,7 @@ form_temp_file(){
             if @@trancount > 0 rollback;
             throw;
         end catch;
-        exec utils.UpdateScriptEnded @ScriptName;
+        exec okay.SetScriptEnded @ScriptName;
     end
     go
 EOF
@@ -33,9 +33,11 @@ EOF
     echo "$sql" >> temp.sql;
 }
 
-
+sqlcmd -Q "raiserror('[INFO] Migration started', 0, 1) with nowait;"
+sqlcmd -Q "raiserror('-------', 0, 1) with nowait;"
 for file_path in ./migration-scripts/*.sql; do
     [ -e "$file_path" ] || continue;
     form_temp_file
     sqlcmd -i temp.sql
 done
+sqlcmd -Q "raiserror('[INFO] Migration finished', 0, 1) with nowait;"

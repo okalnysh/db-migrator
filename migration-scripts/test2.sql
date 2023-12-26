@@ -1,1 +1,1 @@
-select 2;
+waitfor delay '00:00:11';
