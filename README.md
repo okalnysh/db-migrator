@@ -43,6 +43,10 @@ docker compose -f docker-compose-qa.yml run --rm migrator remove.sh __script_nam
 ```
 
 ## Cleaning the Database
+### !!! WARNING !!!
+This is a destructive process and should never be executed under normal circumstances.<br>
+It could only be used during development.<br><br>
+
 The cleaning process involves removing all objects created during initialization. <br>
 Note that this will also erase all migration script execution logs. <br>
 After running this script, you will need to re-initialize database. <br>
