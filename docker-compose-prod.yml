@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  migrator:
+    image: db-migrator:latest
+    volumes:
+      - ./migration-scripts:/migration-scripts
+    working_dir: /
+    environment:
+      - SQLCMDSERVER=${SQLCMDSERVER_PROD}
+      - SQLCMDUSER=${SQLCMDUSER}
+      - SQLCMDPASSWORD=${SQLCMDPASSWORD}
+      - SQLCMDDBNAME=Pipedrive
+      - SQLCMDSTATTIMEOUT=1200

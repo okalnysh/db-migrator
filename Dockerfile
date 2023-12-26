@@ -7,4 +7,4 @@ RUN apt-get update && \
     apt-get install sqlcmd -y && \
     apt-get clean
 RUN mkdir /migration-scripts
-COPY ./*.sh /
+COPY ./*.sh /bin/
