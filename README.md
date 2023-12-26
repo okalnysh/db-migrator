@@ -1,4 +1,4 @@
-# DB Migration Project
+# DB Migrator for SQL Server
 
 ## Overview
 This project aims to execute SQL scripts sequentially from the `migration-scripts` folder. <br>
